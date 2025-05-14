@@ -1,2 +1,2 @@
-# springboot-playground
-Learning about Spring Boot
+# spring-playground
+Learning about the Spring ecosystem
