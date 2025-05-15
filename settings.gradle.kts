@@ -1,3 +1,3 @@
 rootProject.name = "spring-playground"
 
-include("spring-boot")
+include("spring-boot", "spring-data", "spring-kafka")
