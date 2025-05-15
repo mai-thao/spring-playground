@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:16.9
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: adminmt
+      POSTGRES_PASSWORD: adminpw
