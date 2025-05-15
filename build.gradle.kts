@@ -12,4 +12,15 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    // All submodules will use Java 17
+    tasks.withType<JavaCompile> {
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
+    }
+
+    // All submodules will use the JUnit testing framework
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }

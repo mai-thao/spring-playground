@@ -5,18 +5,9 @@ plugins {
     kotlin("plugin.spring")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
