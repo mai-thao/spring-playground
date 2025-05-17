@@ -3,3 +3,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/userdb
     username: adminmt
     password: adminpw
+  jpa:
+    hibernate.ddl-auto: create # Recreates schema on every startup, see: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.data.spring.jpa.hibernate.ddl-auto
