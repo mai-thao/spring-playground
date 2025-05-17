@@ -9,6 +9,6 @@ import jakarta.persistence.Id
 data class UserData(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    val name: String,
-    val gender: String,
+    val name: String = "",
+    val gender: String = "",
 )
