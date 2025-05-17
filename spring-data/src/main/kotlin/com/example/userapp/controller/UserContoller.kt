@@ -12,4 +12,7 @@ class UserContoller(private val userRepo: UserRepository) {
 
     @PostMapping
     fun createUser(@RequestBody userData: UserData): UserData = userRepo.save(userData)
+
+    @DeleteMapping
+    fun deleteUser(@RequestParam id: Long) = userRepo.deleteById(id)
 }
