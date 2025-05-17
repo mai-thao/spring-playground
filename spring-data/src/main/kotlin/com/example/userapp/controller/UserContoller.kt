@@ -1,6 +1,6 @@
 package com.example.userapp.controller
 
-import com.example.userapp.model.User
+import com.example.userapp.model.UserData
 import com.example.userapp.repository.UserRepository
 import org.springframework.web.bind.annotation.*
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/users")
 class UserContoller(private val userRepo: UserRepository) {
     @GetMapping
-    fun getAll(): List<User> = userRepo.findAll()
+    fun getAll(): List<UserData> = userRepo.findAll()
 
     @PostMapping
-    fun createUser(@RequestBody user: User): User = userRepo.save(user)
+    fun createUser(@RequestBody userData: UserData): UserData = userRepo.save(userData)
 }

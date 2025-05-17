@@ -1,6 +1,6 @@
 package com.example.userapp.repository
 
-import com.example.userapp.model.User
+import com.example.userapp.model.UserData
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface UserRepository: JpaRepository<User, Long>
+interface UserRepository: JpaRepository<UserData, Long>
