@@ -8,6 +8,12 @@ import org.springframework.web.server.ResponseStatusException
 
 @Service
 class UserService(private val userRepo: UserRepository) {
+    fun getAllUsers(): List<UserData> = userRepo.findAll()
+
+    fun createNewUser(userData: UserData): UserData = userRepo.save(userData)
+
+    fun deleteUserById(id: Long) = userRepo.deleteById(id)
+
     fun updateUserData(id: Long, userData: UserData): UserData {
         val existingUser = userRepo.findById(id).orElseThrow {
             ResponseStatusException(HttpStatus.NOT_FOUND, "User with id $id not found")
