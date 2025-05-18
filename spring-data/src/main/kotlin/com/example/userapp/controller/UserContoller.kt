@@ -13,8 +13,8 @@ class UserContoller(private val userService: UserService) {
     @PostMapping
     fun createUser(@RequestBody userData: UserData): UserData = userService.createNewUser(userData)
 
-    @DeleteMapping
-    fun deleteUser(@RequestParam id: Long) = userService.deleteUserById(id)
+    @DeleteMapping("/{id}")
+    fun deleteUser(@PathVariable id: Long) = userService.deleteUserById(id)
 
     @PutMapping("/{id}")
     fun updateUser(@PathVariable id: Long, @RequestBody userData: UserData): UserData {
