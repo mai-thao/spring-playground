@@ -13,10 +13,10 @@ allprojects {
         mavenCentral()
     }
 
-    // All submodules will use Java 17
+    // All submodules will use Java 21 (current LTS)
     tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_17.toString()
-        targetCompatibility = JavaVersion.VERSION_17.toString()
+        sourceCompatibility = JavaVersion.VERSION_21.toString()
+        targetCompatibility = JavaVersion.VERSION_21.toString()
     }
 
     // All submodules will use the JUnit testing framework
