@@ -25,3 +25,6 @@ Learning about [Spring Data](https://spring.io/projects/spring-data) with a simp
    4) To delete a user, create a `DELETE` request to http://localhost:8080/users/{id} with the ID of the user
 4) Terminate the app with: Ctrl + C 
 5) Stop the Docker container with: `docker compose down`
+
+### How to Test the app
+1) Execute the command `../gradlew test`

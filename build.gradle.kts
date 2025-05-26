@@ -20,10 +20,9 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 
-    // All submodules will use Java 21 (current LTS)
-    tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_21.toString()
-        targetCompatibility = JavaVersion.VERSION_21.toString()
+    // Gradle and all submodules will target JDK and bytecode to Java 21 (current LTS)
+    kotlin {
+        jvmToolchain(17)
     }
 
     dependencies {
