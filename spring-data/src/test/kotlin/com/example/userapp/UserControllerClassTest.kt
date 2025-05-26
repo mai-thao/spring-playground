@@ -19,6 +19,7 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `should get all users`() {
+        // Arrange
         val mockUsers = listOf(
             UserData(
                 id = 1,
@@ -28,8 +29,10 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
             )
         )
 
+        // Act
         every {userService.getAllUsers()} returns mockUsers
 
+        // Assert
         mockMvc.perform(get("/users"))
             .andExpect(status().isOk)
             .andExpect(content().json(
