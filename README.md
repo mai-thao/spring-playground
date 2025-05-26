@@ -5,7 +5,7 @@ This project has a root module and submodule(s):
 * `spring-playground/` is the root module. It contains the root `build.gradle.kts` that defines shared global configurations, 
 plugins, repositories, and versions across all submodules
 
-* `spring-playground/spring-boot/` is a specific submodule focused on Spring Boot and has its own `build.gradle.kts`. It applies
-the plugins and dependencies needed for the Spring Boot app (and inherits the versions specified from the root `build.gradle.kts` file)
+* `spring-playground/spring-data/` is a specific submodule focused on Spring Data and has its own `build.gradle.kts`. It explicitly 
+applies the unique plugins and dependencies it needs (and inherits the rest from the root `build.gradle.kts` file)
 
 * `settings.gradle.kts` defines all the submodules in the project, letting Gradle know so it can connect and build them together

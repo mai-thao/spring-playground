@@ -7,3 +7,6 @@ Learning about [Spring Boot](https://spring.io/projects/spring-boot) with a basi
 2) Open your web browser and navigate to http://localhost:8080
 3) You should see the pure String output: `"Hello Mai from Kotlin Spring Boot!"`
 4) Terminate the app with: Ctrl + C
+
+_Note: this submodule does not have a `build.gradle.kts` file because all its necessary plugins and dependencies are 
+specified in the root `build.gradle.kts` file!_
