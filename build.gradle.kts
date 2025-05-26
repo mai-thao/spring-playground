@@ -5,13 +5,15 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
 }
 
-subprojects {
-    group = "com.example"
-    version = "0.0.1-SNAPSHOT"
-
+allprojects {
     repositories {
         mavenCentral()
     }
+}
+
+subprojects {
+    group = "com.example"
+    version = "0.0.1-SNAPSHOT"
 
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
