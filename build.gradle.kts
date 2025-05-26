@@ -13,10 +13,26 @@ subprojects {
         mavenCentral()
     }
 
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+
     // All submodules will use Java 21 (current LTS)
     tasks.withType<JavaCompile> {
         sourceCompatibility = JavaVersion.VERSION_21.toString()
         targetCompatibility = JavaVersion.VERSION_21.toString()
+    }
+
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        implementation("org.jetbrains.kotlin:kotlin-reflect") // Kotlin doesn't support reflection by default so explicitly force it to
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test") {
+            exclude(module = "mockito-core") // Using Mockk so don't need the default Mockito mock framework
+        }
+        testImplementation("io.mockk:mockk:1.14.2")
     }
 
     // All submodules will use the JUnit testing framework
