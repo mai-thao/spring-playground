@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @WebMvcTest
@@ -30,12 +30,12 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
         )
 
         // Act
-        every {userService.getAllUsers()} returns mockUsers
+        every { userService.getAllUsers() } returns mockUsers
 
         // Assert
-        mockMvc.perform(get("/users"))
-            .andExpect(status().isOk)
-            .andExpect(content().json(
+        mockMvc.get("/users").andExpect {
+            status().isOk()
+            content().json(
                 """
                     [
                     	{
@@ -46,8 +46,9 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
                     	}
                     ]
                 """.trimIndent()
-            ))
+            )
+        }
 
-        verify { userService.getAllUsers() }
+        verify { userService.getAllUsers() } // Verify getAllUsers() fxn is called once
     }
 }
