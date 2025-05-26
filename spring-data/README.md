@@ -26,5 +26,8 @@ Learning about [Spring Data](https://spring.io/projects/spring-data) with a simp
 4) Terminate the app with: Ctrl + C 
 5) Stop the Docker container with: `docker compose down`
 
+### How to Build the app
+1) Execute the command `../gradlew build`
+
 ### How to Test the app
 1) Execute the command `../gradlew test`
