@@ -4,12 +4,13 @@ import com.example.userapp.model.UserData
 import com.example.userapp.service.UserService
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.ninjasquad.springmockk.MockkBean
+import io.mockk.Runs
 import io.mockk.every
+import io.mockk.just
 import io.mockk.verify
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
@@ -55,6 +56,22 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
     }
 
     @Test
+    fun `should delete user`() {
+        // Arrange
+        val userId = 1L
+
+        // Act
+        every { userService.deleteUserById(userId) } just Runs // Mockk uses "just Runs" construct if fxn returns Unit
+
+        // Assert
+        mockMvc.delete("/users/$userId").andExpect {
+            status().isOk()
+        }
+
+        verify { userService.deleteUserById(userId) }
+    }
+
+    @Test
     fun `should create new user`() {
         // Arrange
         val inputUser = UserData(
@@ -90,7 +107,7 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
     }
 
     @Test
-    fun `should update existing user`() {
+    fun `should update user`() {
         // Arrange
         val userId = 1L
         val userToUpdate = UserData(
