@@ -12,14 +12,14 @@ Learning about [Spring Data](https://spring.io/projects/spring-data) with a simp
    {
        "name": "Jane",
        "gender": "Female",
-       "email": "janesemail@gmail.com"
+       "email": "janesemail@company.com"
    }
    ```
    3) To update an existing user, create a `PUT` request to http://localhost:8080/users/{id} with the ID of the user and a JSON request body of the updated attribute
       * _Note: You can find the user's ID from the `GET` endpoint_
       ```json
       {
-        "email" : "janesupdatedemail@gmail.com"
+        "email" : "janesupdatedemail@company.com"
       }
       ```
    4) To delete a user, create a `DELETE` request to http://localhost:8080/users/{id} with the ID of the user
