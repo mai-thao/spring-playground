@@ -34,6 +34,7 @@ subprojects {
             exclude(module = "mockito-core") // Using Mockk so don't need the default Mockito mock framework
         }
         testImplementation("io.mockk:mockk:1.14.2")
+        testImplementation("com.ninja-squad:springmockk:4.0.2")
     }
 
     // All submodules will use the JUnit testing framework
