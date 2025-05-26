@@ -12,17 +12,13 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
-/**
- * Uses the Mockk Mock testing framework along with the SpringMockk
- */
 @WebMvcTest
-class UserControllerClass(@Autowired val mockMvc: MockMvc) {
+class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
     @MockkBean
     private lateinit var userService: UserService
 
     @Test
     fun `should get all users`() {
-        // Arrange
         val mockUsers = listOf(
             UserData(
                 id = 1,
@@ -32,10 +28,8 @@ class UserControllerClass(@Autowired val mockMvc: MockMvc) {
             )
         )
 
-        // Act
         every {userService.getAllUsers()} returns mockUsers
 
-        // Assert
         mockMvc.perform(get("/users"))
             .andExpect(status().isOk)
             .andExpect(content().json(
