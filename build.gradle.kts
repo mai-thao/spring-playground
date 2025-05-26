@@ -39,5 +39,10 @@ subprojects {
     // All submodules will use the JUnit testing framework
     tasks.withType<Test> {
         useJUnitPlatform()
+
+        testLogging {
+            events("passed", "skipped", "failed") // Log all tests and their outputs
+            outputs.upToDateWhen { false } // Force tests to rerun every time
+        }
     }
 }
