@@ -15,8 +15,14 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
+/**
+ * The @WebMvcTest loads only MVC-related beans (aka just the web/controller layer), instead of the
+ * entire Spring beans. Also injects a MockMvc bean so we can send mock HTTP requests/responses to
+ * the controller.
+ */
 @WebMvcTest
 class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
+    // Replaces the userService bean with a mocked version so we don't use the real service
     @MockkBean
     private lateinit var userService: UserService
 
