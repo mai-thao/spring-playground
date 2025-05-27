@@ -21,8 +21,9 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
 
     // Gradle and all submodules will target JDK and bytecode to Java 21 (current LTS)
+    // For more info on Java support roadmap, see: https://www.oracle.com/java/technologies/java-se-support-roadmap.html
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
 
     dependencies {
@@ -37,13 +38,13 @@ subprojects {
         testImplementation("com.ninja-squad:springmockk:4.0.2")
     }
 
-    // All submodules will use the JUnit testing framework
+    // All submodules will use the JUnit testing framework and log all test outputs
     tasks.withType<Test> {
         useJUnitPlatform()
 
         testLogging {
             events("passed", "skipped", "failed") // Log all tests and their outputs
-            outputs.upToDateWhen { false } // Force tests to rerun every time
+            outputs.upToDateWhen { false } // Auto force tests to rerun every time without specifying --rerun-tasks flag
         }
     }
 }
