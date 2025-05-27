@@ -32,10 +32,9 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
             )
         )
 
-        // Act
         every { userService.getAllUsers() } returns mockUsers
 
-        // Assert
+        // Act, Assert
         mockMvc.get("/users").andExpect {
             status().isOk()
             content().json(
@@ -60,10 +59,9 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
         // Arrange
         val userId = 1L
 
-        // Act
         every { userService.deleteUserById(userId) } just Runs // Mockk uses "just Runs" construct if fxn returns Unit
 
-        // Assert
+        // Act, Assert
         mockMvc.delete("/users/$userId").andExpect {
             status().isOk()
         }
@@ -82,10 +80,9 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
         )
         val outputUser = inputUser.copy(id = 1L)
 
-        // Act
         every { userService.createNewUser(inputUser) } returns outputUser
 
-        // Assert
+        // Act, Assert
         mockMvc.post("/users") {
             contentType = MediaType.APPLICATION_JSON
             content = jacksonObjectMapper().writeValueAsString(inputUser)
@@ -120,10 +117,9 @@ class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
             email = "janesupdatedemail@company.com"
         )
 
-        // Act
         every { userService.updateUserData(userId, userToUpdate) } returns updatedUser
 
-        // Assert
+        // Act, Assert
         mockMvc.put("/users/$userId") {
             contentType = MediaType.APPLICATION_JSON
             content = jacksonObjectMapper().writeValueAsString(userToUpdate)
