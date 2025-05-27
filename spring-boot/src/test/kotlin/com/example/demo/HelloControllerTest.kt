@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 @WebMvcTest
 class HelloControllerTest(@Autowired val mockMvc: MockMvc) {
     @Test
-    fun `should get all users`() {
+    fun `should return a string`() {
         mockMvc.perform(get("/"))
             .andExpect(status().isOk)
             .andExpect(content().string("Hello Mai from Kotlin Spring Boot!"))
