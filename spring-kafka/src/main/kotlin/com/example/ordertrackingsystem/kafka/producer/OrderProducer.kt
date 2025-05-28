@@ -13,5 +13,6 @@ class OrderProducer(private val kafkaTemplate: KafkaTemplate<String, Order>) {
 
     fun sendMessage(order: Order) {
         kafkaTemplate.send(topicName, order.id, order)
+        println("Message with Order ID ${order.id} successfully sent to topic: $topicName")
     }
 }

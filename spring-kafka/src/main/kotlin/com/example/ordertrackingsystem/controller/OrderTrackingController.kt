@@ -21,6 +21,7 @@ class OrderTrackingController (private val producer: OrderProducer) {
             totalAmount = orderRequest.totalAmount
         )
         producer.sendMessage(order)
-        return "Processed!"
+        return "Order successfully processed with ID ${order.id}!"
+
     }
 }
