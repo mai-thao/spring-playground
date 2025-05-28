@@ -2,5 +2,6 @@ package com.example.ordertrackingsystem.model
 
 data class OrderRequest (
     val productName: String,
-    val totalQuantity: Int
+    val totalQuantity: Int,
+    val totalAmount: Double
 )

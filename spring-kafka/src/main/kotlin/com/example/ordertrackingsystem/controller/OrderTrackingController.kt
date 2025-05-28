@@ -16,7 +16,8 @@ class OrderTrackingController () {
         val order = Order(
             id = UUID.randomUUID().toString(),
             productName = orderRequest.productName,
-            totalQuantity = orderRequest.totalQuantity
+            totalQuantity = orderRequest.totalQuantity,
+            totalAmount = orderRequest.totalAmount
         )
         // TODO: Create producer and send msg to topic
         return "Processed!"
