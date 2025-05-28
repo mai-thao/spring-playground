@@ -22,6 +22,5 @@ class OrderTrackingController (private val producer: OrderProducer) {
         )
         producer.sendMessage(order)
         return "Order successfully processed with ID ${order.id}!"
-
     }
 }
