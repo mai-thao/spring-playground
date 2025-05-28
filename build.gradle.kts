@@ -28,7 +28,6 @@ subprojects {
 
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-web")
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.jetbrains.kotlin:kotlin-reflect") // Kotlin doesn't support reflection by default so explicitly force it to
 
         testImplementation("org.springframework.boot:spring-boot-starter-test") {
