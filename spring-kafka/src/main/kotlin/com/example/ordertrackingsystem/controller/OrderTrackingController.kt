@@ -1,5 +1,6 @@
 package com.example.ordertrackingsystem.controller
 
+import com.example.ordertrackingsystem.kafka.producer.OrderProducer
 import com.example.ordertrackingsystem.model.Order
 import com.example.ordertrackingsystem.model.OrderRequest
 import org.springframework.web.bind.annotation.PostMapping
@@ -10,7 +11,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/orders")
-class OrderTrackingController () {
+class OrderTrackingController (private val producer: OrderProducer) {
     @PostMapping
     fun createOrder(@RequestBody orderRequest: OrderRequest): String {
         val order = Order(
@@ -19,7 +20,7 @@ class OrderTrackingController () {
             totalQuantity = orderRequest.totalQuantity,
             totalAmount = orderRequest.totalAmount
         )
-        // TODO: Create producer and send msg to topic
+        producer.sendMessage(order)
         return "Processed!"
     }
 }
