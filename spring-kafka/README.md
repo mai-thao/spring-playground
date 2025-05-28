@@ -20,4 +20,4 @@ controller, producer, and consumer.
    ```
 4) You should see a terminal log output and an API response (in Insomnia): `"Order successfully processed with ID fb484afe-ef28-4d33-b787-8b4107b02e8a!"`
 5) Terminate the app with: Ctrl + C
-6) Stop the Docker container with: `docker compose down`
+6) Stop the Docker containers with: `docker compose down`
