@@ -2,7 +2,7 @@
 Learning about [Spring Boot](https://spring.io/projects/spring-boot) with a basic web Demo App. 
 
 ### How to Run the App
-1) Navigate to the submodule directory and run: `../gradlew bootRun`
+1) Navigate to this `spring-boot/` submodule directory and run: `../gradlew bootRun`
    * Alternatively, run it from the root directory: `./gradlew :spring-boot:bootRun`
 2) Open your web browser and navigate to http://localhost:8080
 3) You should see the pure String output: `"Hello Mai from Kotlin Spring Boot!"`

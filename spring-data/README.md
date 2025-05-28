@@ -2,7 +2,7 @@
 Learning about [Spring Data](https://spring.io/projects/spring-data) with a simple User CRUD application. 
 
 ### How to Run the App
-1) Navigate to the submodule directory and start the PostgreSQL Docker container with: `docker compose up -d`
+1) Navigate to this `spring-data/` submodule directory and start the PostgreSQL Docker container with: `docker compose up -d`
 2) Execute the command: `../gradlew bootRun`
    * The `..` means go up one directory to target the Gradle Wrapper in the root directory
 3) Since this is an API with several endpoints that you can interact with, I recommend using [Insomnia](https://insomnia.rest/features/api-testing) (or [Postman](https://www.postman.com/product/what-is-postman/)) 
