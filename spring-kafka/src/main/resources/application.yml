@@ -8,6 +8,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       group-id: order-group # All consumers with the same group ID share messages
+      auto-offset-reset: earliest # Consume from the beginning of the topic
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
