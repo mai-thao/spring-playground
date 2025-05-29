@@ -1,8 +1,8 @@
 spring:
-  kafka:
-    producer: # See the list of Spring Kafka properties at: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.integration.spring.kafka.producer.bootstrap-servers
-      bootstrap-servers: localhost:9092
+  kafka: # See the list of Spring Kafka properties at: https://docs.spring.io/spring-boot/appendix/application-properties/index.html#application-properties.integration.spring.kafka.producer.bootstrap-servers
+    bootstrap-servers: localhost:9092 # The port where my Kafka broker is running (via Docker containers)
+    template:
+      default-topic: order-tracking-topic # The topic name
+    producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    template:
-      default-topic: order-tracking-topic
