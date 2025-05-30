@@ -25,3 +25,11 @@ controller, producer, and consumer.
    1) `POST` a few more messages and see it flows from producer to consumer through the terminal outputs
 8) Terminate the app with: Ctrl + C
 6) Stop the Docker containers with: `docker compose down`
+
+### How to Build the app
+1) Execute the command `../gradlew build`
+
+### How to Test the app
+1) Execute the command `../gradlew test`
+
+_Note: you may see noisy Kafka set up and tear down logs, but you can safely ignore them! If the integration test result shows `PASSED` then you're set._
