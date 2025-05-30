@@ -14,7 +14,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.kafka.test.utils.KafkaTestUtils
 
 @SpringBootTest
-@EmbeddedKafka(partitions = 1, topics = ["order-tracking-topic"], brokerProperties = ["listeners=PLAINTEXT://localhost:9092", "port=9092"])
+@EmbeddedKafka(partitions = 1, topics = ["order-tracking-topic"])
 class KafkaIntegrationTest {
 
     @Autowired
