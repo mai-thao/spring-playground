@@ -15,13 +15,12 @@ import org.springframework.kafka.test.utils.KafkaTestUtils
 
 @SpringBootTest
 @EmbeddedKafka(partitions = 1, topics = ["order-tracking-topic"])
-class KafkaIntegrationTest {
+class KafkaIntegrationTest(
+    @Autowired private var kafkaTemplate: KafkaTemplate<String, Order>,
+    @Autowired private var embeddedKafkaBroker: EmbeddedKafkaBroker
+) {
 
-    @Autowired
-    private lateinit var kafkaTemplate: KafkaTemplate<String, Order>
-
-    @Autowired
-    private lateinit var embeddedKafkaBroker: EmbeddedKafkaBroker
+    private val topic: String = "order-tracking-topic"
 
     @Test
     fun `should send and receive order object`() {
@@ -34,13 +33,13 @@ class KafkaIntegrationTest {
         consumerProps["spring.json.trusted.packages"] = "*"
 
         val consumer = DefaultKafkaConsumerFactory<String, Order>(consumerProps).createConsumer()
-        embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, "order-tracking-topic")
+        embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, topic)
 
         // Act
-        kafkaTemplate.send("order-tracking-topic", order)
+        kafkaTemplate.send(topic, order)
 
         // Assert
-        val record = KafkaTestUtils.getSingleRecord(consumer, "order-tracking-topic")
+        val record = KafkaTestUtils.getSingleRecord(consumer, topic)
         assertThat(record.value()).isEqualTo(order)
     }
 }
