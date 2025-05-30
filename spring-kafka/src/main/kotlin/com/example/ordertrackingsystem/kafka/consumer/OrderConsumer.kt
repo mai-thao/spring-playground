@@ -1,6 +1,7 @@
 package com.example.ordertrackingsystem.kafka.consumer
 
 import com.example.ordertrackingsystem.model.Order
+import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
 
@@ -11,8 +12,11 @@ import org.springframework.stereotype.Component
  */
 @Component
 class OrderConsumer {
+    // Create a Logger instance named after the class so logs are categorized by class names
+    private val logger = LoggerFactory.getLogger(OrderConsumer::class.java)
+
     @KafkaListener(topics = ["\${spring.kafka.template.default-topic}"])
     fun consume(order: Order) {
-        println("Consumed message: $order")
+        logger.info("Consumed message: $order")
     }
 }

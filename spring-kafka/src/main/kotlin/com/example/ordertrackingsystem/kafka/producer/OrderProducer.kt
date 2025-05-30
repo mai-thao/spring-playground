@@ -1,6 +1,8 @@
 package com.example.ordertrackingsystem.kafka.producer
 
+import com.example.ordertrackingsystem.kafka.consumer.OrderConsumer
 import com.example.ordertrackingsystem.model.Order
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
@@ -17,8 +19,10 @@ class OrderProducer(
     private val kafkaTemplate: KafkaTemplate<String, Order>,
     @Value("\${spring.kafka.template.default-topic}") private val topicName: String
 ) {
+    private val logger = LoggerFactory.getLogger(OrderProducer::class.java)
+
     fun sendMessage(order: Order) {
         kafkaTemplate.send(topicName, order.id, order)
-        println("Message with Order ID: ${order.id} successfully sent to topic: $topicName")
+        logger.info("Message with Order ID: ${order.id} successfully sent to topic: $topicName")
     }
 }
