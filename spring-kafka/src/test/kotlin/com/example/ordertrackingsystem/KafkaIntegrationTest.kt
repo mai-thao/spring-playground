@@ -31,6 +31,7 @@ class KafkaIntegrationTest {
         val consumerProps = KafkaTestUtils.consumerProps("test-group-id", "true", embeddedKafkaBroker)
         consumerProps["key.deserializer"] = StringDeserializer::class.java
         consumerProps["value.deserializer"] = JsonDeserializer::class.java
+        consumerProps["spring.json.trusted.packages"] = "*"
 
         val consumer = DefaultKafkaConsumerFactory<String, Order>(consumerProps).createConsumer()
         embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, "order-tracking-topic")
