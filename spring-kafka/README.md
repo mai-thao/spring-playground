@@ -18,6 +18,9 @@ controller, producer, and consumer.
     "totalAmount": "19.99"
     }
    ```
-4) You should see a terminal log output and an API response (in Insomnia): `"Order successfully processed with ID fb484afe-ef28-4d33-b787-8b4107b02e8a!"`
-5) Terminate the app with: Ctrl + C
+3) Under the hood, the controller will accept the payload and passes it on to the producer. Then the producer will serialize it to JSON and publish it to the Kafka topic called `order-tracking-topic`
+4) It considers that a successful path, and you should see a terminal log output and an API response (in Insomnia): `"Order successfully processed with ID fb484afe-ef28-4d33-b787-8b4107b02e8a!"`
+5) A few seconds later, the event-driven consumer will consume the message, deserialize it, and then print the payload to the terminal: `Consumed message: Order(id=fb484afe-ef28-4d33-b787-8b4107b02e8a, productName=Monopoly Boardgame, totalQuantity=1, totalAmount=19.99)`5) 
+7) That concludes the controller, producer, and consumer relationship of this very simple Kafka Order Tracking system!
+8) Terminate the app with: Ctrl + C
 6) Stop the Docker containers with: `docker compose down`
