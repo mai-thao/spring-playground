@@ -22,6 +22,6 @@ controller, producer, and consumer.
 4) It considers that a successful path, and you should see a terminal log output and an API response (in Insomnia): `"Order successfully processed with ID fb484afe-ef28-4d33-b787-8b4107b02e8a!"`
 5) A few seconds later, the event-driven consumer will consume the message, deserialize it, and then print the payload to the terminal: `Consumed message: Order(id=fb484afe-ef28-4d33-b787-8b4107b02e8a, productName=Monopoly Boardgame, totalQuantity=1, totalAmount=19.99)` 
 7) That concludes the controller, producer, and consumer relationship of this very simple Kafka Order Tracking system
-   1) `POST` a few more messages and see it instantaneously makes it way from producer to consumer
+   1) `POST` a few more messages and see it flows from producer to consumer through the terminal outputs
 8) Terminate the app with: Ctrl + C
 6) Stop the Docker containers with: `docker compose down`
