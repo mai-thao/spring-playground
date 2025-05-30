@@ -13,6 +13,9 @@ import org.springframework.kafka.test.EmbeddedKafkaBroker
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.kafka.test.utils.KafkaTestUtils
 
+/**
+ * Following Spring's recommendation for testing Kafka integration: https://docs.spring.io/spring-kafka/reference/testing.html
+ */
 @SpringBootTest
 @EmbeddedKafka(partitions = 1, topics = ["order-tracking-topic"])
 class KafkaIntegrationTest(
