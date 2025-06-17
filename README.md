@@ -1,5 +1,5 @@
 # spring-playground
-Learning about the [Spring](https://spring.io/) ecosystem using a [multi-module Gradle](https://docs.gradle.org/current/userguide/multi_project_builds.html) project
+Learning about the [Spring](https://spring.io/) ecosystem using a [multi-project Gradle](https://docs.gradle.org/current/userguide/multi_project_builds.html) setup. I will explore some of the core Spring modules like Spring Boot, Spring Data, Spring Kafka, Spring Security, etc. 
 
 This project has a root module and submodule(s):
 * `spring-playground/` is the root module. It contains the root `build.gradle.kts` that defines shared global configurations, 
