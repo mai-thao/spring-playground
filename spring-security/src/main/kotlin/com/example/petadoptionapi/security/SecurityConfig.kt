@@ -26,8 +26,8 @@ class SecurityConfig {
                 authorize(HttpMethod.DELETE, "/pet/**", authenticated)
                 authorize(anyRequest, denyAll)
             }
-            httpBasic { }
-            csrf { disable() }
+            httpBasic { } // Enable basic HTTP authentication
+            csrf { disable() } // Disable csrf since this is a stateless API, not a browser app that uses session & cookies
         }
         return http.build()
     }
@@ -35,7 +35,7 @@ class SecurityConfig {
     @Bean
     fun userDetailsService(): UserDetailsService {
         val user = User.withUsername("user")
-            .password("{noop}password")
+            .password("{noop}password") // {noop} is an identifier to turn off encoding and use it as plaintext (for testing)
             .roles("USER")
             .build()
 
