@@ -11,7 +11,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.config.annotation.web.invoke
 
-// Reference docs at https://spring.io/guides/gs/securing-web
+// Reference docs at https://spring.io/guides/gs/securing-web and https://docs.spring.io/spring-security/reference/servlet/configuration/kotlin.html
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
@@ -27,6 +27,7 @@ class SecurityConfig {
                 authorize(anyRequest, denyAll)
             }
             httpBasic { }
+            csrf { disable() }
         }
         return http.build()
     }
