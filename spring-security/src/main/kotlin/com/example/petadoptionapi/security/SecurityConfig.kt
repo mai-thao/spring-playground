@@ -35,7 +35,7 @@ class SecurityConfig {
     @Bean
     fun userDetailsService(): UserDetailsService {
         val user = User.withUsername("user")
-            .password("password")
+            .password("{noop}password")
             .roles("USER")
             .build()
 
