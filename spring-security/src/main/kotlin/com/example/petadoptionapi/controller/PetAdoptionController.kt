@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pets")
-class PetAdoptionController() {
+class PetAdoptionController {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): Pet = TODO()
 
