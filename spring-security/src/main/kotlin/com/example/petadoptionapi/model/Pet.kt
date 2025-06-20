@@ -5,5 +5,5 @@ data class Pet(
     val name: String,
     val age: Int,
     val breed: String,
-    val adoptionStatus: AdoptionStatus
+    val gender: String
 )
