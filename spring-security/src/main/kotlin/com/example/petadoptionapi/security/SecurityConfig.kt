@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.security.config.annotation.web.invoke
+import org.springframework.security.config.annotation.web.invoke // Must explicitly import this "invoke" fxn to enable the Kotlin DSL
 
 // Reference docs at https://spring.io/guides/gs/securing-web and https://docs.spring.io/spring-security/reference/servlet/configuration/kotlin.html
 @Configuration
@@ -20,11 +20,11 @@ class SecurityConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             authorizeHttpRequests {
-                authorize(HttpMethod.GET, "/pet/**", permitAll)
-                authorize(HttpMethod.POST, "/pet/**", authenticated)
-                authorize(HttpMethod.PUT, "/pet/**", authenticated)
-                authorize(HttpMethod.DELETE, "/pet/**", authenticated)
-                authorize(anyRequest, denyAll)
+                authorize(HttpMethod.GET, "/pets/**", permitAll) // Allow all GET requests
+                authorize(HttpMethod.POST, "/pets/**", authenticated) // Force authentication for POST, PUT, DELETE requests
+                authorize(HttpMethod.PUT, "/pets/**", authenticated)
+                authorize(HttpMethod.DELETE, "/pets/**", authenticated)
+                authorize(anyRequest, denyAll) // Block all other requests
             }
             httpBasic { } // Enable basic HTTP authentication
             csrf { disable() } // Disable csrf since this is a stateless API, not a browser app that uses session & cookies
