@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pets")
-class PetAdoptionController {
+class ControllerSimpleAuth {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): ResponseEntity<Pet> {
         val existingPet = pets.firstOrNull { it.id == id }
