@@ -11,10 +11,10 @@ class SimpleAuthController {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): ResponseEntity<Pet> {
         val existingPet = pets.firstOrNull { it.id == id }
-        if (existingPet != null) {
-            return ResponseEntity.ok(existingPet)
+        return if (existingPet != null) {
+            ResponseEntity.ok(existingPet)
         } else {
-            return ResponseEntity.notFound().build()
+            ResponseEntity.notFound().build()
         }
     }
 
@@ -44,10 +44,10 @@ class SimpleAuthController {
     @DeleteMapping("/{id}")
     fun deletePet(@PathVariable id: Long): ResponseEntity<Nothing> {
         val existingPetIdx = pets.removeIf { it.id == id }
-        if (existingPetIdx) {
-            return ResponseEntity.noContent().build()
+        return if (existingPetIdx) {
+            ResponseEntity.noContent().build()
         } else {
-            return ResponseEntity.notFound().build()
+            ResponseEntity.notFound().build()
         }
     }
 
