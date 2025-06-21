@@ -48,7 +48,7 @@ class ControllerSimpleAuth {
         }
     }
 
-    // List of dummy existing pets
+    // List of sample existing pets
     private val pets = mutableListOf(
         Pet(123, "Lucy", 7, "Husky", "Female"),
         Pet(456, "Buddy", 2, "German Shepherd", "Male"),
