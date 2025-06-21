@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pets")
-class ControllerSimpleAuth {
+class SimpleAuthController {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): ResponseEntity<Pet> {
         val existingPet = pets.firstOrNull { it.id == id }
@@ -22,7 +22,10 @@ class ControllerSimpleAuth {
     fun getAll(): ResponseEntity<List<Pet>> = ResponseEntity.ok(pets)
 
     @PostMapping
-    fun createPet(@RequestBody newPet: Pet): ResponseEntity<Pet> {
+    fun createPet(@RequestBody newPet: Pet): ResponseEntity<Any> {
+        if (pets.any { it.id == newPet.id }) {
+            return ResponseEntity.badRequest().body("ID already exists!")
+        }
         pets.add(newPet)
         return ResponseEntity.status(HttpStatus.CREATED).body(newPet)
     }
