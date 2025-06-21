@@ -3,10 +3,13 @@ package com.example.petadoptionapi.controller
 import com.example.petadoptionapi.model.Pet
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pets")
+@EnableMethodSecurity
 class SimpleAuthController {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): ResponseEntity<Pet> {
@@ -49,6 +52,13 @@ class SimpleAuthController {
         } else {
             ResponseEntity.notFound().build()
         }
+    }
+
+    @DeleteMapping
+    @PreAuthorize("hasRole('ADMIN')") // Granular level restricting this DELETE method to only ADMINs
+    fun deleteAllPet(): ResponseEntity<Nothing> {
+        pets.clear()
+        return ResponseEntity.noContent().build()
     }
 
     // List of sample existing pets

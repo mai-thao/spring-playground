@@ -32,7 +32,7 @@ class SecurityConfig {
                 authorize(HttpMethod.GET, "/pets/**", permitAll)
                 authorize(HttpMethod.POST, "/pets/**", authenticated)
                 authorize(HttpMethod.PUT, "/pets/**", authenticated)
-                authorize(HttpMethod.DELETE, "/pets/**", hasRole("ADMIN"))
+                authorize(HttpMethod.DELETE, "/pets/**", hasRole("MANAGER"))
                 authorize(anyRequest, denyAll)
             }
             httpBasic { } // Enable basic HTTP authentication
@@ -49,9 +49,14 @@ class SecurityConfig {
             .roles("USER")
             .build()
 
+        val manager = User.withUsername("manager")
+            .password("{noop}managerpassword")
+            .roles("MANAGER")
+            .build()
+
         val admin = User.withUsername("admin")
             .password("{noop}adminpassword")
-            .roles("ADMIN")
+            .roles("MANAGER", "ADMIN")
             .build()
 
         return InMemoryUserDetailsManager(user, admin)
