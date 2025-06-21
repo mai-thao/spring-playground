@@ -59,6 +59,6 @@ class SecurityConfig {
             .roles("MANAGER", "ADMIN")
             .build()
 
-        return InMemoryUserDetailsManager(user, admin)
+        return InMemoryUserDetailsManager(user, manager, admin)
     }
 }
