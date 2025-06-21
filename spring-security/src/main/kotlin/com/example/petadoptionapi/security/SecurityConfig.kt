@@ -15,9 +15,11 @@ import org.springframework.security.config.annotation.web.invoke // Must explici
  * A super simple basic authentication configuration with hardcoded in-memory user credentials.
  * Pair this security config with the "ControllerSimpleAuth" class.
  *
- * ALl GET requests to the `/pets` URI have no restrictions
- * All POST, PUT requests to the `/pets` URI are accessible only if logged in (e.g. USER or ADMIN)
- * ALL DELETE requests to the `/pets` URI are accessible only by an ADMIN user
+ * Restrictions:
+ * - ALl `GET` requests to the `/pets` URI have no restrictions
+ * - All `POST`, `PUT` requests to the `/pets` URI are accessible only if logged in (e.g. USER, MANAGER, or ADMIN)
+ * - ALL `DELETE` requests to the `/pets` URI are accessible only by a MANAGER user
+ * -- There is a granular method-level security where the `DELETE` all method is restricted to only ADMINs (see the @PreAuthorize annotation)
  *
  * Reference doc: https://spring.io/guides/gs/securing-web and https://docs.spring.io/spring-security/reference/servlet/configuration/kotlin.html
  */
