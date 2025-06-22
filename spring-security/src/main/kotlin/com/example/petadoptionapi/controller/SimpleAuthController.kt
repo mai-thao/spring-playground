@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pets")
-@EnableMethodSecurity
+@EnableMethodSecurity // Enable granular method-level security: Spring Security will intercept method calls and apply the defined authorization rules
 class SimpleAuthController {
     @GetMapping("/{id}")
     fun getPet(@PathVariable id: Long): ResponseEntity<Pet> {
@@ -55,7 +55,7 @@ class SimpleAuthController {
     }
 
     @DeleteMapping
-    @PreAuthorize("hasRole('ADMIN')") // Granular level restricting this DELETE method to only ADMINs
+    @PreAuthorize("hasRole('ADMIN')") // Granular level restricting this DELETE method to only ADMIN roles
     fun deleteAllPet(): ResponseEntity<Nothing> {
         pets.clear()
         return ResponseEntity.noContent().build()
