@@ -8,8 +8,8 @@ Learning about [Spring Security](https://spring.io/projects/spring-security) wit
 
 #### Secured (Auth Required) Endpoints
 * Requires at least MANAGER role
-   * `POST` /plants – Add a new pet
-   * `PUT` /plants/{id} – Update pet info
-   * `DELETE` /plants/{id} – Delete a pet
+   * `POST` /pets – Add a new pet
+   * `PUT` /pets/{id} – Update pet info
+   * `DELETE` /pets/{id} – Delete a pet
 * Requires ADMIN role
-   *  `DELETE` /plants - Delete all pets 
+   *  `DELETE` /pets - Delete all pets 
