@@ -22,10 +22,13 @@ import org.springframework.kafka.test.utils.KafkaTestUtils
  */
 @SpringBootTest
 @EmbeddedKafka(partitions = 1, topics = ["order-tracking-topic"])
-class KafkaIntegrationTest(
-    @Autowired private var kafkaTemplate: KafkaTemplate<String, Order>,
-    @Autowired private var embeddedKafkaBroker: EmbeddedKafkaBroker
-) {
+class KafkaIntegrationTest {
+
+    @Autowired
+    lateinit var kafkaTemplate: KafkaTemplate<String, Order>
+
+    @Autowired
+    lateinit var embeddedKafkaBroker: EmbeddedKafkaBroker
 
     private val topic: String = "order-tracking-topic"
 

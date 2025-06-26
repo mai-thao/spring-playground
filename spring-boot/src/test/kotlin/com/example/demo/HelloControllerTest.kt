@@ -8,7 +8,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @WebMvcTest
-class HelloControllerTest(@Autowired val mockMvc: MockMvc) {
+class HelloControllerTest {
+
+    @Autowired
+    lateinit var mockMvc: MockMvc
+
     @Test
     fun `should return a string`() {
         mockMvc.perform(get("/"))

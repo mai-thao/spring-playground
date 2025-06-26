@@ -21,7 +21,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
  * the controller.
  */
 @WebMvcTest
-class UserControllerClassTest(@Autowired val mockMvc: MockMvc) {
+class UserControllerClassTest {
+    @Autowired
+    lateinit var mockMvc: MockMvc
+
     // Replaces the userService bean with a mocked version so we don't use the real service
     @MockkBean
     private lateinit var userService: UserService
