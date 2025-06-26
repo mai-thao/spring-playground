@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.*
 
 @SpringBootTest
@@ -53,5 +55,27 @@ class SimpleAuthControllerTest {
             .andExpect {
                 status { isUnauthorized() }
             }
+    }
+
+    @Test
+    @WithMockUser(roles = ["USER"])
+    fun `POST allow authenticated users`() {
+        val reqBody =
+            """
+            {
+                "id": 101,
+                "name": "TEST",
+                "age": 6,
+                "breed": "TEST",
+                "gender": "TEST"
+            }
+            """.trimIndent()
+
+        mockMvc.post("/pets") {
+            contentType = MediaType.APPLICATION_JSON
+            content = reqBody
+        }.andExpect {
+            status { isCreated() }
+        }
     }
 }
