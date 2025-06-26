@@ -110,4 +110,49 @@ class SimpleAuthControllerTest {
                 status { isForbidden() }
             }
     }
+
+    @Test
+    @WithMockUser(roles = ["MANAGER"])
+    fun `DELETE a pet endpoint requires at least manager role`() {
+        mockMvc.delete("/pets/123")
+            .andExpect {
+                status { isNoContent() }
+            }
+    }
+
+    @Test
+    @WithMockUser(roles = ["ADMIN"])
+    fun `DELETE a pet endpoint accessible to admins too`() {
+        mockMvc.delete("/pets/123")
+            .andExpect {
+                status { isNoContent() }
+            }
+    }
+
+    @Test
+    @WithMockUser(roles = ["ADMIN"])
+    fun `DELETE all pets endpoint accessible to admins only`() {
+        mockMvc.delete("/pets")
+            .andExpect {
+                status { isNoContent() }
+            }
+    }
+
+    @Test
+    @WithMockUser(roles = ["USER"])
+    fun `DELETE all pets endpoint returns 403 forbidden to users`() {
+        mockMvc.delete("/pets")
+            .andExpect {
+                status { isForbidden() }
+            }
+    }
+
+    @Test
+    @WithMockUser(roles = ["MANAGER"])
+    fun `DELETE all pets endpoint returns 403 forbidden to managers`() {
+        mockMvc.delete("/pets")
+            .andExpect {
+                status { isForbidden() }
+            }
+    }
 }
