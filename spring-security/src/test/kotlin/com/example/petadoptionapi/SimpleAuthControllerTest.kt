@@ -58,7 +58,7 @@ class SimpleAuthControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = ["USER"])
+    @WithMockUser(roles = ["USER"]) // Important annotation to test authentication! See: https://docs.spring.io/spring-security/reference/servlet/test/method.html#test-method-withmockuser
     fun `POST and PUT allow authenticated users`() {
         val postReqBody =
             """
