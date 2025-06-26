@@ -34,7 +34,7 @@ class SecurityConfig {
                 authorize(HttpMethod.GET, "/pets/**", permitAll)
                 authorize(HttpMethod.POST, "/pets/**", authenticated)
                 authorize(HttpMethod.PUT, "/pets/**", authenticated)
-                authorize(HttpMethod.DELETE, "/pets/**", hasRole("MANAGER"))
+                authorize(HttpMethod.DELETE, "/pets/**", hasAnyRole("MANAGER", "ADMIN"))
                 authorize(anyRequest, denyAll)
             }
             httpBasic { } // Enable basic HTTP authentication
