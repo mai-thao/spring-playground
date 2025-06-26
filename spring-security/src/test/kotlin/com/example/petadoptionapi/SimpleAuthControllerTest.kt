@@ -59,8 +59,8 @@ class SimpleAuthControllerTest {
 
     @Test
     @WithMockUser(roles = ["USER"])
-    fun `POST allow authenticated users`() {
-        val reqBody =
+    fun `POST and PUT allow authenticated users`() {
+        val postReqBody =
             """
             {
                 "id": 101,
@@ -71,11 +71,29 @@ class SimpleAuthControllerTest {
             }
             """.trimIndent()
 
+        val putReqBody =
+            """
+            {
+                "id": 123,
+                "name": "TEST",
+                "age": 6,
+                "breed": "TEST",
+                "gender": "TEST"
+            }
+            """.trimIndent()
+
         mockMvc.post("/pets") {
             contentType = MediaType.APPLICATION_JSON
-            content = reqBody
+            content = postReqBody
         }.andExpect {
             status { isCreated() }
+        }
+
+        mockMvc.put("/pets/123") {
+            contentType = MediaType.APPLICATION_JSON
+            content = putReqBody
+        }.andExpect {
+            status { isOk() }
         }
     }
 }
