@@ -8,6 +8,12 @@ import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.*
 
+/**
+ * This controller test only verifies the different Spring Security access control for different roles. It only
+ * asserts on HTTP status codes and does not assert on the request or return bodies nor internal logic (e.g. whether
+ * a pet exists or not). The goal is to demonstrate the Spring Security authorization logic only. For examples of
+ * assertion on business logic or data correctness, please see my "spring-data" repo!
+ */
 @SpringBootTest
 @AutoConfigureMockMvc // Both annotations load the full Spring context so we can test security and @PreAuthorize configurations
 class SimpleAuthControllerTest {
