@@ -44,6 +44,7 @@ class SecurityConfig {
     }
 
     // Hardcoded, in-memory login credentials (MEANT FOR TESTING ONLY!)
+    // In real production code, we would be more sophisticated and use a 3rd party user store solution!
     @Bean
     fun userDetailsService(): UserDetailsService {
         val user = User.withUsername("user")
