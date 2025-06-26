@@ -59,7 +59,7 @@ class SimpleAuthControllerTest {
 
     @Test
     @WithMockUser(roles = ["USER"]) // Important annotation to test authentication! See: https://docs.spring.io/spring-security/reference/servlet/test/method.html#test-method-withmockuser
-    fun `POST and PUT allow authenticated users`() {
+    fun `POST and PUT endpoints allow authenticated users`() {
         val postReqBody =
             """
             {
@@ -95,5 +95,19 @@ class SimpleAuthControllerTest {
         }.andExpect {
             status { isOk() }
         }
+    }
+
+    @Test
+    @WithMockUser(roles = ["USER"])
+    fun `DELETE endpoints return 403 forbidden for users`() {
+        mockMvc.delete("/pets/123")
+            .andExpect {
+                status { isForbidden() }
+            }
+
+        mockMvc.delete("/pets")
+            .andExpect {
+                status { isForbidden() }
+            }
     }
 }
