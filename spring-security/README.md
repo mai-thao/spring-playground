@@ -12,4 +12,4 @@ Learning about [Spring Security](https://spring.io/projects/spring-security) wit
    * `PUT` /pets/{id} – Update pet info
    * `DELETE` /pets/{id} – Delete a pet
 * Requires ADMIN role
-   *  `DELETE` /pets - Delete all pets 
+   * `DELETE` /pets - Delete all pets 
