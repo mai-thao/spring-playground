@@ -24,16 +24,12 @@ Learning about [Spring Security](https://spring.io/projects/spring-security) wit
      * This endpoint requires at least `USER` authentication, so set Basic Auth credentials to: `"username": "user"` and `"password": "userpassword"`
    ```json
    {
-       "id": 437,
+       "id": 321,
        "name": "Female",
        "age": 2,
        "breed": "Bulldog",
        "gender": "Female"
    }
-   ```
-   ```
-   "username": "user"
-   "password": "password"
    ```
   3) To update an existing pet, create a `PUT` request to http://localhost:8080/pets/{id} with the ID of the pet and a JSON request body and Basic `USER` (see example above for required fields)
   4) To delete a pet, create a `DELETE` request to http://localhost:8080/pets/{id} with the ID of the pet
@@ -41,7 +37,6 @@ Learning about [Spring Security](https://spring.io/projects/spring-security) wit
   5) To delete all pets, create a `DELETE` request to http://localhost:8080/pets
      * This endpoint requires `ADMIN` role, so change Basic Auth credentials to: `"username": "admin"` and `"password": "adminpassword"`
 4) Terminate the app with: Ctrl + C
-5) Stop the Docker container with: `docker compose down`
 
 ### How to Build the app
 1) Execute the command `../gradlew build`
