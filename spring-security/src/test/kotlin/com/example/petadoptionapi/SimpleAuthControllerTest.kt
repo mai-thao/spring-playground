@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.*
 
 /**
@@ -118,6 +119,7 @@ class SimpleAuthControllerTest {
     }
 
     @Test
+    @DirtiesContext // Force Spring to reset the context so the next test can delete the same endpoint again with a fresh context, see: https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-dirtiescontext.html
     @WithMockUser(roles = ["MANAGER"])
     fun `DELETE a pet endpoint requires at least manager role`() {
         mockMvc.delete("/pets/123")
