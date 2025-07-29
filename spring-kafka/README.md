@@ -26,6 +26,8 @@ controller, producer, and consumer.
 8) Terminate the app with: Ctrl + C
 6) Stop the Docker containers with: `docker compose down`
 
+_FYI: I have version controlled my Insomnia collection [here](https://github.com/mai-thao/insomnia-playground) so you don't have to manually build it yourself!_
+
 ### How to Build the app
 1) Execute the command `../gradlew build`
 
