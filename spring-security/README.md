@@ -38,6 +38,8 @@ Learning about [Spring Security](https://spring.io/projects/spring-security) wit
       * This endpoint requires `ADMIN` role, so change Basic Auth credentials to: `"username": "admin"` and `"password": "adminpassword"`
 4) Terminate the app with: Ctrl + C
 
+_FYI: I have version controlled my Insomnia collection [here](https://github.com/mai-thao/insomnia-playground) so you don't have to manually build it yourself!_
+
 ### How to Build the app
 1) Execute the command `../gradlew build`
 
